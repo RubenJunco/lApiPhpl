@@ -38,6 +38,7 @@ $producto = $producto['data'];
 <body>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary position-relative" >
     <div class="container-fluid">
@@ -117,7 +118,11 @@ $producto = $producto['data'];
         <div class="card-footer d-flex justify-content-between">
           <a href="Ejercicio3.html" class="btn btn-primary">Go somewhere</a>
           <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editProductModal1">Editar</button>
-          <a href="#" class="btn btn-danger">Eliminar</a>
+          <!--Eliminar-->
+          <form method="POST" action="Eliminar.php" id="deleteForm-<?= $producto['id'] ?>" style="display:inline;">
+            <input type="hidden" name="productIdEdit" value="<?= $producto['id'] ?>">
+            <button type="button" class="btn btn-danger" onclick="confirmDeletion('<?= $producto['id'] ?>')">Eliminar</button>
+          </form>
         </div>
       </div>
     </div>
@@ -162,6 +167,25 @@ $producto = $producto['data'];
         </div>
       </div>
 
+     
+<script>
+function confirmDeletion(id) {
+    swal({
+        title: "¿Estás seguro?",
+        text: "¡Una vez eliminado, no podrás recuperar este archivo!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    })
+    .then((willDelete) => {
+        if (willDelete) {
+            document.getElementById(`deleteForm-${id}`).submit();
+        } else {
+            swal("Tu archivo está a salvo!");
+        }
+    });
+}
+</script>
+
 </body>
-<!--puse esto para que se envie el commit-->
 </html>
