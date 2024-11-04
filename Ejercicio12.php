@@ -1,3 +1,24 @@
+<?php
+function obtenerCategorias() {
+    $curl = curl_init();
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => 'https://crud.jonathansoto.mx/api/categories',
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_HTTPHEADER => array(
+            'Authorization: Bearer 166|JXM8FRPR9CzOS3osaYaHblyQWFKihBDd6Fvdks9Q',
+        ),
+    ));
+    
+    $response = curl_exec($curl);
+    curl_close($curl);
+    return json_decode($response, true);
+}
+
+$categorias = obtenerCategorias();
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -104,6 +125,14 @@
           <div class="mb-3">
             <label for="productFeactures" class="form-label">Caracteristicas</label>
             <input type="text" class="form-control" id="productFeactures" name="productFeactures" placeholder="Precio del producto" required>
+          </div>
+          <div class="mb-3">
+            <label for="productCategory" class="form-label">Categoría</label>
+            <select class="form-control" id="productCategory" name="productCategory" required>
+              <?php foreach ($categorias['data'] as $categoria): ?>
+                <option value="<?= $categoria['id'] ?>"><?= $categoria['name'] ?></option>
+              <?php endforeach; ?>
+            </select>
           </div>
           <div class="mb-3">
             <label for="productImage" class="form-label">Imagen del Producto</label>
