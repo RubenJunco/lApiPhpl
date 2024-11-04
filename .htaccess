@@ -1,0 +1,14 @@
+# Habilitar la reescritura de URLs
+RewriteEngine On
+
+# Redirigir todas las solicitudes de archivos PHP para ocultar la extensión
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([a-zA-Z0-9_-]+)$ $1.php [L]
+
+
+# Proteger el acceso directo a archivos específicos
+<FilesMatch "(agregar|editar|Eliminar|token)\.php">
+    Order allow,deny
+    Deny from all
+</FilesMatch>

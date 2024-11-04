@@ -1,4 +1,5 @@
-<?php
+<?php 
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $_POST['productIdEdit'];
@@ -16,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         CURLOPT_CUSTOMREQUEST => 'DELETE', 
         CURLOPT_HTTPHEADER => array(
             'Content-Type: application/x-www-form-urlencoded',
-            'Authorization: Bearer 224|IGHqrFx21BI83DsuDFOS7jvF7jGApECxHOtqpAww',
+            'Authorization: Bearer 166|JXM8FRPR9CzOS3osaYaHblyQWFKihBDd6Fvdks9Q',
         ),
     ));
 
@@ -25,6 +26,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     echo $response;
 
-    header('location: Ejercicio12.php ');
+    header('location: Main.php ');
 }
 ?>

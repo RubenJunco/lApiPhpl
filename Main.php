@@ -1,4 +1,6 @@
-<?php
+<?php 
+
+// Continúa con el código para obtener categorías
 function obtenerCategorias() {
     $curl = curl_init();
     curl_setopt_array($curl, array(
@@ -8,7 +10,6 @@ function obtenerCategorias() {
             'Authorization: Bearer 166|JXM8FRPR9CzOS3osaYaHblyQWFKihBDd6Fvdks9Q',
         ),
     ));
-    
     $response = curl_exec($curl);
     curl_close($curl);
     return json_decode($response, true);
@@ -16,7 +17,9 @@ function obtenerCategorias() {
 
 $categorias = obtenerCategorias();
 
+
 ?>
+
 
 
 <!DOCTYPE html>
@@ -89,7 +92,7 @@ $categorias = obtenerCategorias();
             <div class="card-body">
               <h5 class="card-title"><?= ($product['name']) ?></h5>
               <p class="card-text"><?= ($product['description']) ?></p>
-              <a href="descripcion.php?slug=<?= $product['slug'] ?>" class="btn btn-primary">Ver descripción</a> 
+              <a href="Descripcion.php?slug=<?= $product['slug'] ?>" class="btn btn-primary">Ver descripción</a> 
             </div>
             <div class="card-text d-flex justify-content-between">
             </div>
