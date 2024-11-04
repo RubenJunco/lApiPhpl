@@ -70,7 +70,6 @@
               <p class="card-text"><?= ($product['description']) ?></p>
               <a href="descripcion.php?slug=<?= $product['slug'] ?>" class="btn btn-primary">Ver descripción</a> 
             </div>
-
             <div class="card-text d-flex justify-content-between">
             </div>
           </div>
@@ -89,7 +88,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="agregar.php" method="POST">
+        <form action="agregar.php" method="POST" enctype="multipart/form-data">
           <div class="mb-3">
             <label for="productName" class="form-label">Nombre del Producto</label>
             <input type="text" class="form-control" id="productName" name="productName" placeholder="Ingresa el nombre del producto" required>
@@ -106,14 +105,18 @@
             <label for="productFeactures" class="form-label">Caracteristicas</label>
             <input type="text" class="form-control" id="productFeactures" name="productFeactures" placeholder="Precio del producto" required>
           </div>
+          <div class="mb-3">
+            <label for="productImage" class="form-label">Imagen del Producto</label>
+            <input type="file" class="form-control" id="productImage" name="productImage" accept="image/*" required>
+          </div>
           <button type="submit" class="btn btn-success">Añadir Producto</button>
           <input type="hidden" name="addProduct">
         </form>
       </div>
     </div>
   </div>
-  
 </div>
+
 
 <!--puse esto para que se envie el commit-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
